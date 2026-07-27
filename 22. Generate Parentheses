@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void genpara(vector<string>&ans , string &s , int close ,int open , int n ){
+        if(open == n && close == n){
+            ans.push_back(s);
+            return ;
+        }
+        if(open<n){
+            s.push_back('(');
+            genpara(ans,s,close,open+1,n);
+            s.pop_back();
+        }
+        if(close<open){
+            s.push_back(')');
+            genpara(ans,s,close+1,open,n);
+            s.pop_back();
+        }
+        return;
+    }
+    vector<string> generateParenthesis(int n) {
+        vector<string>ans;
+        string s = "";
+        int close = 0;
+        int open = 0;
+        genpara(ans,s,close,open,n);
+        return ans;
+    }
+};
