@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    void fun(vector<string>&ans,string temp,int idx,string s){
+        if(idx >=s.size()){
+            ans.push_back(temp);
+            return ;
+        }
+        temp.push_back(s[idx]);
+        fun(ans,temp,idx+1,s);
+        temp.pop_back();
+        fun(ans,temp,idx+1,s);
+        return ;
+    }
+    vector<string> powerSet(string &s) {
+        // Code here
+        vector<string>ans;
+        string temp = "";
+        int idx = 0;
+        fun(ans,temp,idx,s);
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
+};
